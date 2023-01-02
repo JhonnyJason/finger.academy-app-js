@@ -1,4 +1,8 @@
-export function initializse() { 
+// note: json imports only works with webpack!
+import chromeShortcuts from "./google-chrome-macos-de.json"
+import macbookKeyboard from "./macbook-keyboard-de.json"
+
+export function initialize() { 
     //TODO
 }
 
@@ -65,8 +69,12 @@ export function startFingerAcademy() {
       const JSONResponses = await Promise.all(JSONPromises);
 
       // parse the json data
-      const shortcutsJSONResponse = await JSONResponses[0].json();
-      const keyboardJSONResponse = await JSONResponses[1].json();
+      //   const shortcutsJSONResponse = await JSONResponses[0].json();
+      //   const keyboardJSONResponse = await JSONResponses[1].json();
+      
+      // we use the imported json instead
+      const shortcutsJSONResponse = chromeShortcuts;
+      const keyboardJSONResponse = macbookKeyboard;
 
       // escape html in the json data
       shortcutsData = searchAndReplaceAllStrings(shortcutsJSONResponse, escapeHTML);
